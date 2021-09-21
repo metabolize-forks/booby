@@ -1,0 +1,55 @@
+version: 2
+jobs:
+  main:
+    docker:
+      - image: circleci/python:3.8
+
+    steps:
+      - checkout
+
+      - run:
+          name: Install python dependencies
+          # set -o pipefail; pip .. | cat is used to disable the progress bar.
+          command: |
+            mkdir -p venv
+            virtualenv venv
+            . venv/bin/activate
+            set -o pipefail; pip install --upgrade -r test-requirements.txt | cat
+            pip install .
+
+      - run:
+          name: Show versions
+          command: |
+            . venv/bin/activate
+            pip freeze
+
+      - run:
+          name: Run unit tests
+          when: always
+          command: |
+            . venv/bin/activate
+            nosetests -P tests/unit
+
+      - run:
+          name: Run integration tests
+          when: always
+          command: |
+            . venv/bin/activate
+            nosetests -P tests/integration
+
+workflows:
+  version: 2
+
+  on-commit:
+    jobs:
+      - main
+
+  daily:
+    triggers:
+      - schedule:
+          cron: "0 17 * * *"
+          filters:
+            branches:
+              only: main
+    jobs:
+      - main
