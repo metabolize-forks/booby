@@ -15,6 +15,7 @@ jobs:
             virtualenv venv
             . venv/bin/activate
             set -o pipefail; pip install --upgrade -r test-requirements.txt | cat
+            pip install .
 
       - run:
           name: Show versions
