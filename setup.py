@@ -6,8 +6,8 @@ with open('README.rst') as f:
     long_description = f.read()
 
 setup(
-    name='booby',
-    version='0.7.0',
+    name='metabooby',
+    version='0.8.0',
     description='Data modeling and validation Python library',
     long_description=long_description,
     url='https://github.com/jaimegildesagredo/booby',
