@@ -25,6 +25,18 @@ class TestDefaultModelInit(object):
         expect(lambda: User(foo='bar')).to(raise_error(
             errors.FieldError, 'foo'))
 
+    def test_when_field_with_default_then_set_default_value(self):
+        animal = Animal()
+        expect(animal.role).to(equal('Animal'))
+
+    def test_when_pass_value_for_field_with_default_then_set_value(self):
+        animal = Animal(role='Leprechaun')
+        expect(animal.role).to(equal('Leprechaun'))
+
+    def test_when_pass_none_for_field_with_default_then_set_value(self):
+        animal = Animal(role=None)
+        expect(animal.role).to(equal('Animal'))
+
 
 class TestOverridenModelInit(object):
     def test_when_pass_args_then_set_fields_values(self):
