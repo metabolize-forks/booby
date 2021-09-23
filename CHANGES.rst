@@ -1,6 +1,19 @@
 Changes
 =======
 
+0.9.0 (Sep 23, 2021)
+--------------------
+
+- Given explicit None / null, replace with defaults.
+
+0.8.0 (Sep 20, 2021)
+--------------------
+
+Backwards-incompatible
+^^^^^^^^^^^^^^^^^^^^^^
+
+- Require Python 3.
+
 0.7.0 (Dec 3, 2014)
 -------------------
 
