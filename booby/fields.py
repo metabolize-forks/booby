@@ -100,7 +100,13 @@ class Field(object):
         return self
 
     def __set__(self, instance, value):
-        instance._data[self] = value
+        if value is None:
+            try:
+                del instance._data[self]
+            except KeyError:
+                pass
+        else:
+            instance._data[self] = value
 
     def _default(self, model):
         if callable(self.default):
