@@ -37,7 +37,7 @@ class List(Encoder):
 
     @nullable
     def encode(self, value):
-        if not isinstance(value, collections.MutableSequence):
+        if not isinstance(value, collections.abc.MutableSequence):
             raise errors.EncodeError()
 
         result = []

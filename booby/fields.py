@@ -183,7 +183,7 @@ class Embedded(Field):
         self.model = model
 
     def __set__(self, instance, value):
-        if isinstance(value, collections.MutableMapping):
+        if isinstance(value, collections.abc.MutableMapping):
             value = self.model(**value)
 
         super(Embedded, self).__set__(instance, value)
@@ -251,7 +251,7 @@ class Collection(Field):
         self.model = model
 
     def __set__(self, instance, value):
-        if isinstance(value, collections.MutableSequence):
+        if isinstance(value, collections.abc.MutableSequence):
             value = self._resolve(value)
 
         super(Collection, self).__set__(instance, value)
@@ -259,7 +259,7 @@ class Collection(Field):
     def _resolve(self, value):
         result = []
         for item in value:
-            if isinstance(item, collections.MutableMapping):
+            if isinstance(item, collections.abc.MutableMapping):
                 item = self.model(**item)
             result.append(item)
         return result

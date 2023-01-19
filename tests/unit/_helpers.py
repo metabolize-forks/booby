@@ -15,7 +15,7 @@ class Spy(object):
         self.times_called += 1
 
 
-class MyList(collections.MutableSequence):
+class MyList(collections.abc.MutableSequence):
     def __init__(self, *args):
         self._store = list(args)
 
@@ -35,7 +35,7 @@ class MyList(collections.MutableSequence):
         pass
 
 
-class MyDict(collections.MutableMapping):
+class MyDict(collections.abc.MutableMapping):
     def __init__(self, **kwargs):
         self._store = kwargs
 

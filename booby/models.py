@@ -111,7 +111,7 @@ class Model(mixins.Encoder, metaclass=ModelMeta):
 
             if isinstance(value, Model):
                 value = dict(value)
-            elif isinstance(value, collections.MutableSequence):
+            elif isinstance(value, collections.abc.MutableSequence):
                 value = self._encode_sequence(value)
 
             yield name, value
