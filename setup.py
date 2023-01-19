@@ -7,7 +7,7 @@ with open('README.rst') as f:
 
 setup(
     name='metabooby',
-    version='0.9.0',
+    version='0.10.0',
     description='Data modeling and validation Python library',
     long_description=long_description,
     url='https://github.com/jaimegildesagredo/booby',
